@@ -15,7 +15,10 @@ int main() {
         config["smtp"]["address"].get<std::string>(),
         config["smtp"]["port"].get<int>()
     );
-    client.setCredentials(Credential("myfromaddress@test.com", "mypassword"));
+    client.setCredentials(Credential(
+        config["smtp"]["credentials"]["username"].get<std::string>(),
+        config["smtp"]["credentials"]["password"].get<std::string>()
+    ));
 
     std::string tmp_path  = config["template_file"].get<std::string>();
     std::ifstream ft(tmp_path);
