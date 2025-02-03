@@ -1,0 +1,6 @@
+[submodule "includes/json"]
+	path = includes/json
+	url = https://github.com/nlohmann/json.git
+[submodule "includes/Jinja2Cpp"]
+	path = includes/Jinja2Cpp
+	url = https://github.com/jinja2cpp/Jinja2Cpp.git
