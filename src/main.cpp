@@ -35,6 +35,30 @@ int main() {
         jinja2::ValuesMap values;
         values["username"] = user["username"].get<std::string>();
         std::string result = tpl.RenderAsString(values).value();
+        MessageAddress address = MessageAddress(
+            config["email"].get<std::string>(), config["username"].get<std::string>()
+        );
+        try {
+            PlaintextMessage msg(
+                address,
+			    { MessageAddress(user["email"].get<std::string>(), user["username"].get<std::string>()) },
+			    config["title"].get<std::string>(),
+		     	result
+            );
+            int err_no = client.sendMail(msg);
+	    	if (err_no != 0) {
+	    		std::cerr << client.getCommunicationLog() << '\n';
+	    		std::string errorMessage = client.getErrorMessage(err_no);
+                std::cerr << "An error occurred: " << errorMessage
+                    << " (error no: " << err_no << ")" << '\n';
+	     		return 1;
+		    }
+	    	std::cout << client.getCommunicationLog() << '\n';
+	    	std::cout << "Operation completed!" << std::endl;
+        }
+        catch (std::invalid_argument &err) {
+		    std::cerr << err.what() << std::endl;
+    	}
         std::cout << result << std::endl;
     }
 
