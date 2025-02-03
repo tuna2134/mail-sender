@@ -4,3 +4,6 @@
 [submodule "includes/Jinja2Cpp"]
 	path = includes/Jinja2Cpp
 	url = https://github.com/jinja2cpp/Jinja2Cpp.git
+[submodule "includes/CPP-SMTPClient-library"]
+	path = includes/CPP-SMTPClient-library
+	url = https://github.com/jeremydumais/CPP-SMTPClient-library.git
