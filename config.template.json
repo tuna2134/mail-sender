@@ -1,0 +1,20 @@
+{
+    "template_file": "content.template.txt",
+    "target_users": [
+        {
+            "username": "example user",
+            "email": "to@example.com"
+        }
+    ],
+    "username": "System mail",
+    "email": "from@example.com",
+    "title": "Test email",
+    "smtp": {
+        "address": "smtp.example.com",
+        "port": 587,
+        "credentials": {
+            "username": "from@example.com",
+            "password": "Pa55w0rd"
+        }
+    }
+}
